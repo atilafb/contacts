@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Add rspec-rails gem to use to test my app.
   gem 'rspec-rails', '~> 5.0.0'
+  # Add gem to fix mail error
+  gem 'net-smtp', require: false
 end
 
 group :development do
