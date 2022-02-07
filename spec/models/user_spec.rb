@@ -1,23 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  fixtures :users
-  context 'create a simple user when have a valid input' do
-    it 'check if the input is valid' do
-      # Setup & Exercise
-      user = User.new(name: 'usuario')
-      # Verify
-      expect(user.name).to match(/[a-zA-Z]/)
-    end
+  subject { User.new(name: 'Jose', age: 18, biography: 'A long history') }
+
+  it 'create a user with name' do
+    expect(subject).to be_valid
   end
-  context 'can not create a user without a name' do
-    it 'validate when the input is empty' do
-      # Setup
-      user = User.new
-      # Exercise
-      user.validate
-      # Verify
-      expect(user.errors[:name]).to include("can't be blank")
-    end
+
+  it 'do not create a user without name' do
+    subject.name = nil
+    expect(subject).to_not be_valid
+  end
+
+  it 'do not create a user if the name has already been taken' do
+    subject.save!
+    invalid_user = User.new(name: 'Jose')
+    invalid_user.save
+    expect(invalid_user).to_not be_valid
   end
 end

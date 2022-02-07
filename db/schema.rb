@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_03_183203) do
+ActiveRecord::Schema.define(version: 2022_02_07_204232) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2022_02_03_183203) do
   create_table "phones", force: :cascade do |t|
     t.string "number"
     t.string "phone_kind"
-    t.boolean "is_main?"
+    t.boolean "is_main"
     t.integer "contact_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
