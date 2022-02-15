@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'settings/_colors.css';
+@import 'settings/_fonts.css';
+@import 'settings/_spacing';
+
+@import 'generic/_box-sizing.css';
+@import 'generic/_resets.css';
+
+@import 'elements/_body.css';
+@import 'elements/_table.css';
+@import 'elements/_list.css';
+
+@import 'components/_card.css';

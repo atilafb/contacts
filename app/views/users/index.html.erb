@@ -1,18 +1,22 @@
-<h2>Users</h2>
+<div class="card card--base-spacing">
+  <h2>Users</h2>
+</div>
 
-<table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Age</th>
-    <th>Contacts</th>
-    <th>Phones</th>
-  </tr>
-<% @users.each do |user| %>
-  <tr>
-    <td><%=link_to user.name, user_path(user.id) %></td>
-    <td><%= user.age %></td>
-    <td><%= user.contacts.count %></td>
-    <td><%= Contact.where(user_id: user.id).joins(:phones).count %></td>
-  </tr>
-<% end %>
-</table>
+<div class="card card--small-spacing">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Contacts</th>
+      <th>Phones</th>
+    </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user_path(user.id) %></td>
+      <td><%= user.age %></td>
+      <td><%= user.contacts.count %></td>
+      <td><%= Contact.where(user_id: user.id).joins(:phones).count %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
