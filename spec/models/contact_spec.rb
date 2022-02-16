@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Contact, type: :model do
-  let!(:user) {
-    User.create(name: 'Jose', age: 18, biography: 'A long history')
-  }
+  subject { Contact.new(user:, name: 'Maria') }
 
-  subject { Contact.new(user: user, name: 'Maria') }
+  let!(:user) do
+    User.create(name: 'Jose', age: 18, biography: 'A long history')
+  end
 
   it 'create a valid contact' do
     expect(subject).to be_valid
@@ -13,19 +13,19 @@ RSpec.describe Contact, type: :model do
 
   it 'do not create a contact without a name' do
     subject.name = nil
-    expect(subject).to_not be_valid
+    expect(subject).not_to be_valid
   end
 
   it 'do not create a contact without an user' do
     subject.user = nil
-    expect(subject).to_not be_valid
+    expect(subject).not_to be_valid
   end
 
   it 'do not create a contact if the name has already been taken' do
     subject.save!
-    invalid_contact = Contact.new(user: user, name: 'Maria')
+    invalid_contact = Contact.new(user:, name: 'Maria')
     invalid_contact.save
-    expect(invalid_contact).to_not be_valid
+    expect(invalid_contact).not_to be_valid
   end
 
   it 'create a contact with the same name to other user' do

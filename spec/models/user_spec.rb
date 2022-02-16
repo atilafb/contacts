@@ -9,13 +9,13 @@ RSpec.describe User, type: :model do
 
   it 'do not create a user without name' do
     subject.name = nil
-    expect(subject).to_not be_valid
+    expect(subject).not_to be_valid
   end
 
   it 'do not create a user if the name has already been taken' do
     subject.save!
     invalid_user = User.new(name: 'Jose')
     invalid_user.save
-    expect(invalid_user).to_not be_valid
+    expect(invalid_user).not_to be_valid
   end
 end
