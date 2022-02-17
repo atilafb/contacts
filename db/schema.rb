@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_204232) do
+ActiveRecord::Schema.define(version: 2022_02_16_234503) do
 
   create_table "contacts", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.date "birthdate"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 2022_02_07_204232) do
   end
 
   create_table "phones", force: :cascade do |t|
-    t.string "number"
-    t.string "phone_kind"
-    t.boolean "is_main"
+    t.string "number", null: false
+    t.string "phone_kind", null: false
+    t.boolean "is_main", default: false
     t.integer "contact_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 2022_02_07_204232) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "age"
     t.text "biography"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_users_on_name", unique: true
   end
 
   add_foreign_key "contacts", "users"
