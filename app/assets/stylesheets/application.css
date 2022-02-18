@@ -24,6 +24,7 @@
 @import 'elements/_body.css';
 @import 'elements/_table.css';
 @import 'elements/_list.css';
+@import 'elements/_hr.css';
 
 @import 'components/_container.css';
 @import 'components/_card.css';

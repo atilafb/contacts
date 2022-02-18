@@ -14,7 +14,10 @@
       <li><%= contact.name %></li>
         <ul>
         <% contact.phones.each do |phone| %>
-          <li><strong>Number:</strong> <%= phone.number %>, <strong>Phone Kind:</strong> <%= phone.phone_kind %>, <strong>Principal:</strong> <%= phone.principal %></li>
+          <li><strong>Number:</strong> <%= phone.number %></li>
+          <li><strong>Phone Kind:</strong> <%= phone.phone_kind %></li>
+          <li><strong>Principal:</strong> <%= phone.principal %></li>
+          <hr>
         <% end %>
         </ul>
     </ul>
