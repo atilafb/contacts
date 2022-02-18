@@ -1,2 +1,20 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2><%= @user.name %> Information</h2>
+
+<div>
+  <p>Age: <%= @user.age %> </p>
+  <p>Biography: <%= @user.biography %> </p>
+</div>
+
+<div>
+  <p><%= @user.name %> contacts:</p>
+  <% @user.contacts.each do |contact| %>
+    <ul>
+      <li><%= contact.name %></li>
+        <ul>
+        <% contact.phones.each do |phone| %>
+          <li><%= phone.number %></li>
+        <% end %>
+        </ul>
+    </ul>
+  <% end %>
+</div>
