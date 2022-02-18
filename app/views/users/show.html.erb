@@ -1,18 +1,20 @@
-<h2><%= @user.name %> Information</h2>
+<div class="container container--base-spacing">
+  <h2><%= @user.name %> Information</h2>
+</div>
 
-<div>
+<div class="card card--user-info">
   <p>Age: <%= @user.age %> </p>
   <p>Biography: <%= @user.biography %> </p>
 </div>
 
-<div>
-  <p><%= @user.name %> contacts:</p>
+<div class="container container--large-spacing">
+  <h3><%= @user.name %> contacts:</h3>
   <% @user.contacts.each do |contact| %>
-    <ul>
+    <ul class="card card--user-info">
       <li><%= contact.name %></li>
         <ul>
         <% contact.phones.each do |phone| %>
-          <li><%= phone.number %></li>
+          <li><strong>Number:</strong> <%= phone.number %>, <strong>Phone Kind:</strong> <%= phone.phone_kind %>, <strong>Principal:</strong> <%= phone.principal %></li>
         <% end %>
         </ul>
     </ul>
