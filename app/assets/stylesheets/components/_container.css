@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+}
+
+.container--small-spacing {
+    padding: var(--small-space-size);
+}
+
+.container--base-spacing {
+    padding: var(--base-space-size);
+}
+
+.container--large-spacing {
+    padding: var(--large-space-size);
+}

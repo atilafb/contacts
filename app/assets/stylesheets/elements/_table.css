@@ -1,0 +1,20 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid var(--black);
+    padding: var(--table-space-size);
+    text-align: center;
+}
+
+td {
+    background-color: var(--pastel-blue);
+    color: var(--black);
+}
+
+th {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}

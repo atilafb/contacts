@@ -1,0 +1,9 @@
+:root {
+    /* px Spacing Size */
+    --base-space-size: 16px;
+    --small-space-size: 8px;
+    --large-space-size: 32px;
+
+    /* em Spacing Size */
+    --table-space-size: 0.5rem;
+  }
