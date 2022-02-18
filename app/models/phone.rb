@@ -2,6 +2,9 @@ class Phone < ApplicationRecord
   belongs_to :contact
 
   validates :number, presence: true, uniqueness: { scope: :contact_id }
-  validates :phone_kind, presence: true
-  validates :is_main, inclusion: { in: [true, false] }, uniqueness: { scope: :contact_id, conditions: -> { where(is_main: true) } }
+  validates :phone_kind, inclusion: { in: ['casa', 'trabalho', 'outro'] }
+  validates :principal, uniqueness: {
+    scope: :contact_id,
+    conditions: lambda { where(principal: true) }
+  }
 end
