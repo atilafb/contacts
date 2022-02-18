@@ -10,11 +10,11 @@ td, th {
 }
 
 td {
-    background-color: var(--pastel-blue);
+    background-color: var(--white-1);
     color: var(--black);
 }
 
 th {
-    background-color: var(--dark-blue);
+    background-color: var(--black);
     color: var(--white);
 }

@@ -1,5 +1,5 @@
 body {
-    background-color: var(--pastel-red);
+    background-color: var(--gray);
     color: var(--black);
     font-size: var(--base-font-size);
     margin: var(--base-space-size);
