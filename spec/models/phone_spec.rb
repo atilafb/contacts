@@ -1,58 +1,58 @@
 require 'rails_helper'
 
 RSpec.describe Phone, type: :model do
-  let!(:user) {
+  subject(:new_phone) { Phone.new(contact:, number: '11112222', phone_kind: 'casa', principal: true) }
+
+  let(:user) do
     User.create(name: 'Jose', age: 18, biography: 'A long history')
-  }
-  let!(:contact) {
-    Contact.create(user: user, name: 'Maria')
-  }
-
-  subject { Phone.new(contact: contact, number: '11112222', phone_kind: 'Casa', is_main: true) }
-
-  it 'create a valid phone' do
-    expect(subject).to be_valid
+  end
+  let(:contact) do
+    Contact.create(user:, name: 'Maria')
   end
 
-  it 'do not create a phone without a contact' do
-    subject.contact = nil
-    expect(subject).to_not be_valid
+  it 'requires a valid phone' do
+    expect(new_phone).to be_valid
   end
 
-  it 'do not create a phone without a number' do
-    subject.number = nil
-    expect(subject).to_not be_valid
+  it 'requires a contact to create a phone' do
+    new_phone.contact = nil
+    expect(new_phone).not_to be_valid
   end
 
-  it 'do not create a phone without a phone_kind' do
-    subject.phone_kind = nil
-    expect(subject).to_not be_valid
+  it 'requires a number to create a phone' do
+    new_phone.number = nil
+    expect(new_phone).not_to be_valid
   end
 
-  it 'do not create a phone without is_main validation' do
-    subject.is_main = nil
-    expect(subject).to_not be_valid
+  it 'requires a phone_kind to create a phone' do
+    new_phone.phone_kind = nil
+    expect(new_phone).not_to be_valid
   end
 
-  it 'do not create a phone if the number has already been taken' do
-    subject.save!
-    invalid_number = Phone.new(contact: contact, number: '11112222', phone_kind: 'Casa', is_main: false)
+  it 'requires phone_kind to be included in the list' do
+    new_phone.phone_kind = 'outra coisa'
+    expect(new_phone).not_to be_valid
+  end
+
+  it 'requires the number has not already been taken to create a phone' do
+    new_phone.save!
+    invalid_number = Phone.new(contact:, number: '11112222', phone_kind: 'casa', principal: false)
     invalid_number.save
-    expect(invalid_number).to_not be_valid
+    expect(invalid_number).not_to be_valid
   end
 
-  it 'create a phone with the same number to other user' do
-    subject.save!
-    second_contact = Contact.create(user: user, name: 'Marcos')
-    valid_phone = Phone.new(contact: second_contact, number: '11112222', phone_kind: 'Casa', is_main: false)
+  it 'creates a phone with the same number to other user' do
+    new_phone.save!
+    second_contact = Contact.create(user:, name: 'Marcos')
+    valid_phone = Phone.new(contact: second_contact, number: '11112222', phone_kind: 'casa', principal: false)
     valid_phone.save
     expect(valid_phone).to be_valid
   end
 
-  it 'do not create phone with is_main true if there is another phone as true' do
-    subject.save!
-    invalid_phone = Phone.new(contact: contact, number: '33334444', phone_kind: 'Casa', is_main: true)
+  it 'requires the is_main is the only true value to create another phone' do
+    new_phone.save!
+    invalid_phone = Phone.new(contact:, number: '33334444', phone_kind: 'casa', principal: true)
     invalid_phone.save
-    expect(invalid_phone).to_not be_valid
+    expect(invalid_phone).not_to be_valid
   end
 end
