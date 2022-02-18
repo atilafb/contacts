@@ -16,3 +16,8 @@
 .container--large-spacing {
     padding: var(--large-space-size);
 }
+
+.container--custom-container{
+    gap: var(--small-space-size);
+    flex-direction: column;
+}

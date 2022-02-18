@@ -1,2 +1,29 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container container--base-spacing">
+  <h2><%= @user.name %> Information</h2>
+</div>
+
+<div class="card card--user-info">
+  <p>Age: <%= @user.age %> </p>
+  <p>Biography: <%= @user.biography %> </p>
+</div>
+
+<div class="container container--base-spacing">
+  <h3><%= @user.name %> Contacts:</h3>
+</div>
+
+<div class="container container--custom-container">
+  <% @user.contacts.each do |contact| %>
+    <ul class="card card--user-info">
+      <li><%= contact.name %></li>
+      <hr>
+        <ul>
+        <% contact.phones.each do |phone| %>
+          <li>Number: <%= phone.number %></li>
+          <li>Phone Kind: <%= phone.phone_kind %></li>
+          <li>Principal: <%= phone.principal %></li>
+          <hr>
+          <% end %>
+        </ul>
+    </ul>
+  <% end %>
+</div>
