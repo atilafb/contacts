@@ -3,4 +3,8 @@ class User < ApplicationRecord
   validates_associated :contacts
 
   validates :name, presence: true, uniqueness: true
+
+  def phones_count(id)
+    Contact.where(user_id: id).joins(:phones).count
+  end
 end

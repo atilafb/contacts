@@ -15,7 +15,7 @@
       <td><%= user.name %></td>
       <td><%= user.age %></td>
       <td><%= user.contacts.count %></td>
-      <td><%= Contact.where(user_id: user.id).joins(:phones).count %></td>
+      <td><%= user.phones_count(user.id) %></td>
     </tr>
   <% end %>
   </table>
