@@ -1,0 +1,20 @@
+:root {
+    /* Primary Colors */
+      --light-yellow: #ffe21d;
+      --dark-yellow: #ffd21d;
+      --light-blue: #24afff;
+      --dark-blue: #248bff;
+      --red: #f26c6c;
+      --green: #27b667;
+      --white: #ffffff;
+      --black: #000000;
+  
+      /* Shades of White */
+      --white-1: #f0ead6;
+  
+      /* Pastel Shades */
+      --pastel-red: #ffd9d7;
+      --pastel-green: #d5f5d5;
+      --pastel-yellow: #fefed0;
+      --pastel-blue: #dfe9ec;
+    }

@@ -1,0 +1,22 @@
+<div class="container container--base-spacing">
+  <h2>Users</h2>
+</div>
+
+<div class="container container--small-spacing">
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Contacts</th>
+      <th>Phones</th>
+    </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.age %></td>
+      <td><%= user.contacts.count %></td>
+      <td><%= user.phones.count(user.id) %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
